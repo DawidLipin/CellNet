@@ -57,7 +57,7 @@ For all remaining steps, the process is as follows:
 7. Reset the core values to $C_1$.
 
 
-## TO DO
+## TODO
 
 1. Complete the example notebook (`Example.ipynb`) to demonstrate the functionality of the network.
 2. Develop support for cell clustering, enabling networks where cells are not fully connected to every other cell.
