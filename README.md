@@ -42,8 +42,6 @@ Each Standard Cell consists of:
 6. The network undergoes standard backpropagation, updating the core values. These updated values are saved as $C_2$.
 7. Finally, the core values are reset to $C_1$ for the next step.
 
----
-
 #### **Subsequent Steps**
 For all remaining steps, the process is as follows:
 
