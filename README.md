@@ -55,3 +55,10 @@ For all remaining steps, the process is as follows:
 5. Update the network parameters using standard backpropagation.
 6. Save the updated core values as $C_2$.
 7. Reset the core values to $C_1$.
+
+
+## TO DO
+
+1. Complete the example notebook (`Example.ipynb`) to demonstrate the functionality of the network.
+2. Develop support for cell clustering, enabling networks where cells are not fully connected to every other cell.
+3. Add CUDA support to enhance performance on GPU hardware.
