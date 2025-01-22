@@ -180,8 +180,11 @@ class OutCell(nn.Module):
             y_out = torch.cat([y_out, self.core], dim=0)
             y_out = self.out_combine(y_out)
 
-        # Return the output for other cells, the predicted new core and the output for the network
-        return y_out_conns, core_new, y_out
+            # Return the output for other cells, the predicted new core and the output for the network
+            return (y_out_conns, core_new), y_out
+
+        # Return the output for other cells and the predicted new core
+        return (y_out_conns, core_new), None
 
 
 def temporal_loss(output, target, time=0, alpha=0.1):
