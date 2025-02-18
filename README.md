@@ -36,22 +36,21 @@ Each Standard Cell consists of:
    - Example: In a network with cells $A, B, C, D, E$, cell $A$ will receive inputs from $B, C, D, E$, while $B$ will receive inputs from $A, C, D, E$.
 
    **InCells** receive additional external inputs from the training data.
-3. These inputs are used to update the cores of all cells. This is done through the connections within the network, NOT through backpropagation.
+3. These inputs are used to obtain updated core values for all cells. This is done through the connections within the network, NOT through backpropagation, however those updated are not applied at this point and are instead saved as $C_1$.
 4. **OutCells** produce outputs used to calculate a task-specific loss function. This loss generates gradients for all components of the network (cores and connections).
-5. Before applying these gradients, the current core values are saved as $C_1$.
-6. The network undergoes standard backpropagation, updating the core values. These updated values are saved as $C_2$.
-7. Finally, the core values are reset to $C_1$ for the next step.
+5. The network undergoes standard backpropagation, updating the core values. These updated values are saved as $C_2$.
+6. Finally, the core values are reset to $C_1$ for the next step.
 
 #### **Subsequent Steps**
 For all remaining steps, the process is as follows:
 
 1. Each cell receives inputs from other cells via their connections. **InCells** may optionally receive additional training data.
-2. The cores are updated based on the inputs received (not gradients). Save the new core values as $C_1$.
+2. The new cores are obtained based on the inputs received (not gradients). Save the new core values as $C_1$.
 3. Calculate the network loss:
-   - **Loss (a):** Measure the difference between the current core values and $C_2$ using Mean Squared Error (MSE).
+   - **Loss (a):** Measure the difference between $C_1$ and $C_2$ using Mean Squared Error (MSE).
    - **Loss (b):** If external input is received, calculate an additional loss based on the output.
 
-    **Loss (a)** ensures the network learns to predict and adapt to gradient changes, while **Loss (b)** allows it to learn from the training data. This dual-loss approach enables the network to anticipate and adjust for future data, even in the absence of new inputs.
+    **Loss (a)** ensures the network learns to predict it's own gradient changes, while **Loss (b)** allows it to learn from the training data. This dual-loss approach enables the network to anticipate and adjust for future data, even in the absence of new inputs.
 5. Update the network parameters using standard backpropagation.
 6. Save the updated core values as $C_2$.
 7. Reset the core values to $C_1$.
